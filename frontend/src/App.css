@@ -457,3 +457,11 @@ border-radius: 50px;
   height: 43px;
   width: 13%;
 }
+
+/*signup form*/
+
+@media (min-width: 1025px) {
+  .h-custom {
+  height: 100vh !important;
+  }
+  }
