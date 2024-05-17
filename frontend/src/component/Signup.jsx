@@ -1,174 +1,170 @@
 import React from 'react'
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { enqueueSnackbar } from 'notistack';
-import { useNavigate } from 'react-router-dom';
+import { useFormik } from 'formik'
+import Swal from 'sweetalert2'
+import * as Yup from 'yup'
+import { useNavigate } from 'react-router-dom'
 
+const SignupSchema = Yup.object().shape({
+    email: Yup.string().email('Invalid email').required('Required'),
+    password: Yup.string().min(4, 'Too short!').max(20, 'Too Long!').required('Required'),
+})
 
 const Signup = () => {
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  // step1 : formik initialization
-  const SignupForm = useFormik({
-    initialValues: {
-      firstname: '',
-      lastname: '',
-      email: '',
-      password: ''
-    },
+    const SignupForm = useFormik({
+        initialValues: {
+            fname: '',
+            lname: '',
+            email: '',
+            password: '',
+            createdAt: new Date()
+        },
+        onSubmit: async (values, action) => {
 
-    onSubmit: async (values, action) => {
-      try {
-        const res = await fetch('http://localhost:3000/user/add', {
-          method: "POST",
-          body: JSON.stringify(values),
-          headers: {
-            "Content-Type": "application/json"
-          }
-        });
-        console.log(res.status)
-        action.resetForm()
+            console.log(values);
 
-        if (res.status === 200) {
-          enqueueSnackbar('Signup successful', { variant: 'success' });
+            const res = await fetch('http://localhost:3000/users1/add', {
+                method: 'POST',
+                body: JSON.stringify(values),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
 
-        } else {
-          const data = await res.json();
-          enqueueSnackbar(data.message || 'Signup failed', { variant: 'error' });
-        }
-      } catch (error) {
-        console.error('Signup failed:', error);
-        enqueueSnackbar('Signup failed', { variant: 'error' });
-      }
-    },
-    validationSchema: SignupSchema
-  });
-  return (
-    <div>
-      <>
-        {/* Section: Design Block */}
-        <section className="">
-          {/* Jumbotron */}
-          <div
-            className="px-4 py-5 px-md-5 text-center text-lg-start"
-            style={{ backgroundColor: "hsl(0, 0%, 96%)" }}
-          >
-            <div className="container">
-              <div className="row gx-lg-5 align-items-center">
-                <div className="col-lg-6 mb-5 mb-lg-0">
-                  <h1 className="my-5 display-3 fw-bold ls-tight">
-                    The best offer <br />
-                    <span className="text-primary">for your business</span>
-                  </h1>
-                  <p style={{ color: "hsl(217, 10%, 50.8%)" }}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
-                    itaque accusantium odio, soluta, corrupti aliquam quibusdam
-                    tempora at cupiditate quis eum maiores libero veritatis? Dicta
-                    facilis sint aliquid ipsum atque?
-                  </p>
-                </div>
-                <div className="col-lg-6 mb-5 mb-lg-0">
-                  <div className="card">
-                    <div className="card-body py-5 px-md-5">
-                      <form>
-                        {/* 2 column grid layout with text inputs for the first and last names */}
-                        <div className="row">
-                          <div className="col-md-6 mb-4">
-                            <div data-mdb-input-init="" className="form-outline">
-                              <input
-                                type="text"
-                                id="form3Example1"
-                                className="form-control"
-                              />
-                              {/*/step2 : handling when submit */}
-                              <form onSubmit={SignupForm.handleSubmit}>
-                                <label className="form-label" htmlFor="form3Example1">
-                                  First name
-                                </label>
-                                <span style={{ color: 'red', fontSize: '10' }}>{SignupForm.touched.firstname && SignupForm.errors.firstname}</span>
-                                <input type="text" className="form-control mb-4"
-                                  id="firstname"
-                                  onChange={SignupForm.handleChange}
-                                  value={SignupForm.values.firstname} />
+            });
+            console.log(res.status)
+            action.resetForm();
+
+            if (res.status === 200) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Signup Success',
+                    text: 'You have been successfully signed up!',
+                })
+                navigate('/login');
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                })
+
+            }
+        },
+        validationSchema: SignupSchema,
+    });
+
+    return (
+        <>
+            {/* Section: Design Block */}
+            <section className="text-center text-lg-start bg-tertiary">
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html:
+                            "\n    .cascading-right {\n      margin-right: -50px;\n    }\n\n    @media (max-width: 991.98px) {\n      .cascading-right {\n        margin-right: 0;\n      }\n    }\n  "
+                    }}
+                />
+                {/* Jumbotron */}
+                <div className="container py-4">
+                    <div className="row g-0 align-items-center">
+                        <div className="col-lg-6 mb-5 mb-lg-0">
+                            <div
+                                className="card cascading-right"
+                                style={{
+                                    backgroundColor: "rgba(255, 255, 255, 0.9)",
+                                    // backdropFilter: "blur(80px)"
+                                }}
+                            >
+                                <div className="card-body p-5 shadow-5 text-center">
+                                    <h2 className="fw-bold mb-5">Sign Up Now</h2>
+                                    <form onSubmit={SignupForm.handleSubmit}>
+                                        {/* 2 column grid layout with text inputs for the first and last names */}
+                                        <div className="row">
+                                            <div className="col-md-6 mb-4">
+                                                <div className="form-outline">
+                                                    <label className="form-label fw-bold" htmlFor="form3Example1">
+                                                        First name
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="fname"
+                                                        onChange={SignupForm.handleChange}
+                                                        value={SignupForm.values.fname}
+                                                        className="form-control"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="col-md-6 mb-4">
+                                                <div className="form-outline">
+                                                    <label className="form-label fw-bold" htmlFor="form3Example2">
+                                                        Last name
+                                                    </label>
+                                                    <input
+                                                        type="text"
+                                                        id="lname"
+                                                        onChange={SignupForm.handleChange}
+                                                        value={SignupForm.values.lname}
+                                                        className="form-control"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {/* Email input */}
+                                        <div className="form-outline mb-4">
+                                            <label className="form-label fw-bold" htmlFor="form3Example3">
+                                                Email address
+                                            </label>
+                                            <input
+                                                type="email"
+                                                id="email"
+                                                onChange={SignupForm.handleChange}
+                                                value={SignupForm.values.email}
+                                                className="form-control"
+                                            />
+                                        </div>
+                                        {/* Password input */}
+                                        <div className="form-outline mb-4 fw-bold">
+                                            <label className="form-label" htmlFor="form3Example4">
+                                                Password
+                                            </label>
+                                            <input
+                                                type="password"
+                                                id="password"
+                                                onChange={SignupForm.handleChange}
+                                                value={SignupForm.values.password}
+                                                className="form-control"
+                                            />
+                                        </div>
+                                        {/* Checkbox */}
+                                        
+                                        {/* Submit button */}
+                                        <button
+                                            type="submit"
+                                            className="btn btn-primary btn-block mb-4"
+                                        >
+                                            Sign up
+                                        </button>
+                                        
+                                    </form>
+                                </div>
                             </div>
-                          </div>
-                          <div className="col-md-6 mb-4">
-                            <div data-mdb-input-init="" className="form-outline">
-                              <input
-                                type="text"
-                                id="form3Example2"
-                                className="form-control"
-                              />
-                              <label className="form-label" htmlFor="form3Example2">
-                                Last name
-                              </label>
-                              <span style={{ color: 'red', fontSize: '10' }}>{SignupForm.touched.lastname && SignupForm.errors.lastname}</span>
-                              <input type="text" className="form-control mb-4"
-                                id="lastname"
-                                onChange={SignupForm.handleChange}
-                                value={SignupForm.values.lastname} />
-                            </div>
-                          </div>
                         </div>
-                        {/* Email input */}
-                        <div data-mdb-input-init="" className="form-outline mb-4">
-                          <input
-                            type="email"
-                            id="form3Example3"
-                            className="form-control"
-                          />
-                          <label className="form-label" htmlFor="form3Example3">
-                            Email address
-                          </label>
-                          <span style={{ color: 'red', fontSize: '10' }}>{SignupForm.touched.email && SignupForm.errors.email}</span>
-                          <input type="text" className="form-control mb-4"
-                            id="email"
-                            onChange={SignupForm.handleChange}
-                            value={SignupForm.values.email} />
+                        <div className="col-lg-6 mb-5 mb-lg-0">
+                            <img
+                                src="https://static.vecteezy.com/system/resources/previews/002/779/363/large_2x/sign-up-concept-young-man-signing-up-or-login-to-online-account-on-smartphone-app-secure-login-and-password-illustration-flat-vector.jpg"
+                                className="w-100 rounded-4 shadow-4"
+                                alt=""
+                            />
                         </div>
-                        {/* Password input */}
-                        <div data-mdb-input-init="" className="form-outline mb-4">
-                          <input
-                            type="password"
-                            id="form3Example4"
-                            className="form-control"
-                          />
-                          <label className="form-label" htmlFor="form3Example4">
-                            Password
-                          </label>
-                          <span style={{ color: 'red', fontSize: '10' }}>{SignupForm.touched.password && SignupForm.errors.password}</span>
-                          <input type="text" className="form-control mb-4"
-                            id="password"
-                            onChange={SignupForm.handleChange}
-                            value={SVGAnimateElementignupForm.values.password} />
-                        </div>
-
-                        {/* Submit button */}
-                        <button
-                          type="submit"
-                          data-mdb-button-init=""
-                          data-mdb-ripple-init=""
-                          className="btn btn-primary btn-block mb-4"
-                        >
-                          Sign up
-                        </button>
-
-                      </form>
                     </div>
-                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          {/* Jumbotron */}
-        </section>
-        {/* Section: Design Block */}
-      </>
-    </div>
-  )
-}
-  }
+                {/* Jumbotron */}
+            </section>
+            {/* Section: Design Block */}
+        </>
 
+    )
+}
 
 export default Signup
