@@ -64,7 +64,7 @@ const Navbar = () => {
               </li>
 
               <li>
-                <Link className="nav-link n-txt" to="/Contact2">
+                <Link className="nav-link n-txt" to="/Contactus">
                   Contact Us
                 </Link>
               </li>

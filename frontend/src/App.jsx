@@ -8,6 +8,13 @@ import Login from './component/Login'
 import Signup from './component/Signup'
 import Contactus from './component/Contactus'
 import './App.css'
+import Services from './component/services'
+import Base from './component/Admin/Base'
+import Index from './component/Admin/Index'
+import Header from './component/Admin/Header'
+import Sidebar from './component/Admin/Sidebar'
+// import AddServices from './component/AddServices'
+ 
 
 const App = () => {
   return (
@@ -22,6 +29,19 @@ const App = () => {
           <Route path='/Signup' element={<Signup/>}/>
           <Route path='/Login' element={<Login/>}/>
           <Route path='/Contactus' element={<Contactus/>}/>
+          <Route path='/services' element={<Services/>}/>
+          <Route path='/AddServices' element={<AddServices/>}/>
+          <Route path='/LaunchingServices' element={<LaunchingServices/>}/>
+          <Route path='/Lmanage' element={<Lmanage/>}/>
+          <Route path='/ManagingServices' element={<ManagingServices/>}/>
+          
+          <Route path='/Admin' element={<Admin />}>
+          <Route path='Base'element={<Base/>}/>
+          <Route path='Header'element={<Header/>}/>
+          <Route path='Index'element={<Index/>}/>
+          <Route path='Sidebar'element={<Sidebar/>}/>
+          </Route>
+
         </Routes>
         </AppProvider>
         </BrowserRouter>
