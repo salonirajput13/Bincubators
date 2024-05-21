@@ -11,7 +11,7 @@ const ContactSchema = Yup.object().shape({
     message: Yup.string().required("Required"),
 })
 
-const Contact2 = () => {
+const Contactus = () => {
 
     const navigate = useNavigate();
 
@@ -110,4 +110,4 @@ const Contact2 = () => {
     )
 }
 
-export default Contact2
+export default Contactus

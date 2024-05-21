@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import app_config from "../../config";
+import app_config from "../config";
 import Swal from "sweetalert2";
 import { useFormik } from "formik";
 
