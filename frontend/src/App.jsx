@@ -13,8 +13,12 @@ import Base from './component/Admin/Base'
 import Index from './component/Admin/Index'
 import Header from './component/Admin/Header'
 import Sidebar from './component/Admin/Sidebar'
-// import AddServices from './component/AddServices'
- 
+import AddServices from './component/AddServices'
+import LaunchingServices from './component/LaunchingServices'
+import Lmanage from './component/Lmanage'
+import ManagingServices from './component/ManagingServices'
+import Mmanage from './component/Mmanage'
+import PlanningServices from './component/PlanningServices'
 
 const App = () => {
   return (
@@ -33,9 +37,12 @@ const App = () => {
           <Route path='/AddServices' element={<AddServices/>}/>
           <Route path='/LaunchingServices' element={<LaunchingServices/>}/>
           <Route path='/Lmanage' element={<Lmanage/>}/>
-          <Route path='/ManagingServices' element={<ManagingServices/>}/>
+          <Route path='/ManagingServices' element={< ManagingServices />}/>
+          <Route path='/PlanningServices' element={< PlanningServices/>}/>
+          <Route path='/Mmanage'element={<Mmanage />}/>
+
           
-          <Route path='/Admin' element={<Admin />}>
+          <Route path='/Admin' element={<Admin/>}>
           <Route path='Base'element={<Base/>}/>
           <Route path='Header'element={<Header/>}/>
           <Route path='Index'element={<Index/>}/>
