@@ -1,6 +1,6 @@
 import React from 'react'
 // import addservice from '../assets/addservice.png'
-import MDEditor from '@uiw/react-md-editor';
+// import MDEditor from '@uiw/react-md-editor';
 import Swal from "sweetalert2";
 import { useState } from 'react';
 import { useFormik } from 'formik';

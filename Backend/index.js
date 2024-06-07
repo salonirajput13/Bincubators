@@ -11,7 +11,7 @@ const EnquiryRouter = require("./Routers/EnquiryRouter")
 const UtilRouter = require("./Routers/Utils")
 
 app.use(cors({
-    origin: ['http://localhost:5173']
+    origin: ['http://localhost:5174']
 }))
 app.use(express.json());
 app.use("/users1", UserRouter);
@@ -25,6 +25,6 @@ app.use(express.static('./static/uploads'));
 
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`Server is running on port ${port}`);
     }
 );
