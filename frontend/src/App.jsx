@@ -13,7 +13,6 @@ import Login from './component/Login'
 import PlanningServices from './component/PlanningServices'
 import LaunchingServices from './component/LaunchingServices'
 import ManagingServices from './component/ManagingServices'
-import AddServices from './component/AddServices'
 import Contactus from './component/Contactus'
 import Roadmap from './component/Roadmap';
 // import AdminProfile from './component/Admin/AdminProfile';
@@ -31,6 +30,7 @@ import Header from './component/Admin/Header';
 import Base from './component/Admin/Base';
 import Umanage from './component/Umanage';
 import EnquiryData from './component/EnquiryData';
+import AddServices from './component/AddServices';
 // import Chat from './components/Chat'
 // import ExpertChat from './components/ExpertCaht'
 // import UserChat from './components/UserChat'
@@ -53,7 +53,7 @@ const App = () => {
               <Route path='/PlanningServices' element={<PlanningServices/>} />
               <Route path='/LaunchingServices' element={<LaunchingServices/>} />
               <Route path='/ManagingServices' element={<ManagingServices/>} />
-              <Route path='/AddServices' element={<AdminAuth><AddServices/> </AdminAuth>} />
+              
               <Route path='/UpdateService/:id' element={<AdminAuth><UpdateService /></AdminAuth>} />
               <Route path='/Roadmap' element={<Roadmap/>} />
               <Route path='/Contactus' element={<Contactus/>} />
@@ -72,6 +72,7 @@ const App = () => {
                 <Route path='Base' element={<Base />} />
                 <Route path='Umanage' element={<Umanage />} />
                 <Route path='EnquiryData' element={<EnquiryData />} />
+                <Route path='AddServices' element={<AddServices/> } />
                 
                 {/* <Route path='Sidebar' element={<Sidebar />} /> */}
               </Route>

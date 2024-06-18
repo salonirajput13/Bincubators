@@ -21,7 +21,7 @@ app.use('/feedbacks', FeedbackRouter);
 app.use('/enquiry', EnquiryRouter);
 app.use('/util', UtilRouter);
 
-app.use(express.static('./static/uploads'));
+app.use(express.static('./Uploads'));
 
 
 app.listen(port, () => {

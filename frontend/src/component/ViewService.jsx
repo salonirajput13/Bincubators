@@ -29,7 +29,7 @@ const ViewService = () => {
         <div className="col-md-6 mx-auto">
             <div className="row"><span className="ser-i"><img className="ser-ic" src={icons}/></span>
                 <div className="card-shadow m-5 p-3"><span className="ser"><img className="ser-icon" src={icons}/></span>
-                    <div>
+                    <div data-color-mode="light">
                         <MDEditor.Markdown source={userData.content} style={{ whiteSpace: 'pre-wrap' }} />
                     </div>
                 </div>

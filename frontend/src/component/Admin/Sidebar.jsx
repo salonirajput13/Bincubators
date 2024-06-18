@@ -43,6 +43,11 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
                 </Link>
             </li>
             <li className='sidebar-list-item'>
+                <Link to="/admin/AddServices">
+                    <BsPeopleFill className='icon'/>Add Services
+                </Link>
+            </li>
+            <li className='sidebar-list-item'>
                 <Link to="/admin/EnquiryData">
                     <BsPeopleFill className='icon'/> Enquiry Data
                 </Link>

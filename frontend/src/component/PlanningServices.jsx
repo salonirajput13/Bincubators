@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Fade from 'react-reveal/Fade';
+import p from '../assets/p.gif'
 
 
 const PlanningServices = () => {
@@ -36,7 +37,7 @@ const PlanningServices = () => {
               <div className="col-md-4">
                 <img
                   className="img-fluid p-card-img"
-                  src={"http://localhost:3000/" + service.simage}
+                  src={p}
                   alt=""
                 />
               </div>

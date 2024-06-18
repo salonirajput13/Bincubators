@@ -1,6 +1,6 @@
 import React from 'react'
 // import addservice from '../assets/addservice.png'
-// import MDEditor from '@uiw/react-md-editor';
+import MDEditor from '@uiw/react-md-editor';
 import Swal from "sweetalert2";
 import { useState } from 'react';
 import { useFormik } from 'formik';
@@ -86,7 +86,7 @@ const AddServices = () => {
   return (
     <div className="card srv-card mt-5 w-75 d-flex mx-auto p-4">
       <h1 className="text-center">Add Services</h1>
-      <div className='mt-5'>
+      <div className='mt-5' data-color-mode="light">
         <MDEditor value={markdownContent} onChange={(v) => setMarkdownContent(v)} />
       </div>
       <form onSubmit={addServiceForm.handleSubmit}>
