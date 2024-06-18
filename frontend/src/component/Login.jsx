@@ -3,7 +3,7 @@ import { useFormik } from 'formik'
 import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import * as Yup from 'yup'
-import useAppContext from '../../AppContext'
+import useAppContext from '../AppContext'
 
 const LoginSchema = Yup.object().shape({
     password: Yup.string().min(4, 'Too short!').max(20, 'Too Long!'),
@@ -43,7 +43,7 @@ const Login = () => {
                 sessionStorage.setItem('isloggedin', true);
                 if (data.role === 'admin') {
                     sessionStorage.setItem('admin', JSON.stringify(data));
-                    navigate('/admin/base');
+                    navigate('/Admin/base');
                 } else {
                     sessionStorage.setItem('user', JSON.stringify(data));
                     navigate('/');

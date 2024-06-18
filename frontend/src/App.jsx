@@ -16,19 +16,21 @@ import ManagingServices from './component/ManagingServices'
 import AddServices from './component/AddServices'
 import Contactus from './component/Contactus'
 import Roadmap from './component/Roadmap';
-import Pmanage from './component/Pmanage';
-import Lmanage from './component/Lmanage';
-import Mmanage from './component/Mmanage';
-import AdminProfile from './component/AdminProfile';
+// import AdminProfile from './component/Admin/AdminProfile';
 import ViewService from './component/ViewService';
-import Base from './component/Admin/Base';
-import Header from './component/Admin/Header';
-import Umanage from './component/Umanage';
-import Sidebar from './component/Admin/Sidebar';
 import { AppProvider } from './AppContext';
 import UpdateService from './component/UpdateService';
 import ForgetPassword from './component/ForgetPassword';
 import UserProfile from './component/UserProfile';
+import Main from './component/Admin/Index';
+import Dashboard from './component/Dashboard';
+import Pmanage from './component/Pmanage';
+import Lmanage from './component/Lmanage';
+import Mmanage from './component/Mmanage';
+import Header from './component/Admin/Header';
+import Base from './component/Admin/Base';
+import Umanage from './component/Umanage';
+import EnquiryData from './component/EnquiryData';
 // import Chat from './components/Chat'
 // import ExpertChat from './components/ExpertCaht'
 // import UserChat from './components/UserChat'
@@ -59,23 +61,22 @@ const App = () => {
               <Route path='/ForgetPassword' element={<ForgetPassword/>} />
               
               <Route path='/UserProfile' element={<UserAuth><UserProfile/></UserAuth>}/>
-              {/* <Route path='/Chat' element={<Chat />} /> */}
-              <Route path='/Admin' element={<AdminAuth> <main/> </AdminAuth>} > 
-                {/* <Route path='Dashboard' element={ <Dashboard />} /> */}
-                <Route path='Pmanage' element={<Pmanage/>} />
+
+              <Route path='/Admin' element={<AdminAuth> <Main /> </AdminAuth>} > 
+                <Route path='Dashboard' element={ <Dashboard />} />
+                <Route path='Pmanage' element={<Pmanage />} />
                 <Route path='Lmanage' element={<Lmanage />} />
                 <Route path='Mmanage' element={<Mmanage />} />
-                <Route path='AdminProfile' element={<AdminProfile />} />
+                {/* <Route path='AdminProfile' element={<AdminProfile />} /> */}
                 <Route path='Header' element={<Header />} />
                 <Route path='Base' element={<Base />} />
                 <Route path='Umanage' element={<Umanage />} />
-                {/* <Route path='EnquiryData' element={<EnquiryData />} /> */}
-                <Route path='Sidebar' element={<Sidebar />} />
+                <Route path='EnquiryData' element={<EnquiryData />} />
+                
+                {/* <Route path='Sidebar' element={<Sidebar />} /> */}
               </Route>
-
-              {/* <Route path='/ExpertChat' element={<ExpertChat />} /> 
-              <Route path='/UserChat' element={<UserChat />} />  */}
-
+            
+            
             </Routes>
             {/* <Chat /> */}
           </AppProvider>

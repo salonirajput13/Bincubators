@@ -22,7 +22,7 @@ const Navbar = () => {
         {/* Container wrapper */}
         <div className="container">
           {/* Navbar brand */}
-          <Link className="navbar-brand me-2" to="/Admin/base">
+          <Link className="navbar-brand me-2" to="/Admin/Umanage">
             <img
               src={logo}
               height={50}

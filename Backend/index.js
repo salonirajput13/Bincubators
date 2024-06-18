@@ -11,7 +11,7 @@ const EnquiryRouter = require("./Routers/EnquiryRouter")
 const UtilRouter = require("./Routers/Utils")
 
 app.use(cors({
-    origin: ['http://localhost:5174']
+    origin: ['http://localhost:5173']
 }))
 app.use(express.json());
 app.use("/users1", UserRouter);
